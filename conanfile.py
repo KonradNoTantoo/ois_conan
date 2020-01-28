@@ -14,28 +14,28 @@ class OisConan(ConanFile):
     # options = {"shared": [True, False]}
     # default_options = "shared=False"
     generators = "cmake"
-    _source_subfolder = "source_subfolder"
+    folder_name = "OIS-{}".format(version)
 
     def source(self):
         tools.get("https://github.com/wgois/OIS/archive/v{}.tar.gz".format(self.version))
-        os.rename("OIS-{}".format(self.version), self._source_subfolder)
 
-        # This small hack might be useful to guarantee proper /MT /MD linkage
-        # in MSVC if the packaged project doesn't have variables to set it
-        # properly
-        tools.replace_in_file(os.path.join(self._source_subfolder, "CMakeLists.txt"),
+        tools.replace_in_file(os.path.join(self.folder_name, "CMakeLists.txt"),
             "project(OIS)",
             '''PROJECT(OIS)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()''')
 
-    def build(self):
+    def _configure_cmake(self):
         cmake = CMake(self)
-        cmake.configure(source_folder=self._source_subfolder)
+        cmake.configure(source_folder=self.folder_name)
+        return cmake
+
+    def build(self):
+        cmake = self._configure_cmake()
         cmake.build()
 
     def package(self):
-        cmake = CMake(self)
+        cmake = self._configure_cmake()
         cmake.install()
 
     def package_info(self):
