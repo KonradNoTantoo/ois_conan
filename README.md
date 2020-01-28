@@ -1,4 +1,4 @@
-# Conan recipe for ois 1.5.0
+# Conan recipe for ois 1.5
 
 [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/github/KonradNoTantoo/ois_conan?svg=true)](https://ci.appveyor.com/project/KonradNoTantoo/ois-conan)
 

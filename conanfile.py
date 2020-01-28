@@ -7,7 +7,7 @@ class OisConan(ConanFile):
     version = "1.5"
     license = "zlib"
     author = "konrad.no.tantoo"
-    url = ""
+    url = "https://github.com/KonradNoTantoo/ois_conan"
     description = "Cross Platform Object Oriented Input Lib System. Meant to be very robust and compatible with many systems and operating systems."
     topics = ("User input", "UI")
     settings = "os", "compiler", "build_type", "arch"
