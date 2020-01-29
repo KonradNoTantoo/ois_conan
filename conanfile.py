@@ -16,6 +16,10 @@ class OisConan(ConanFile):
     generators = "cmake"
     folder_name = "OIS-{}".format(version)
 
+    def requirements(self):
+        if tools.os_info.is_linux:
+            self.requires("libx11/1.6.8@bincrafters/stable")
+
     def source(self):
         tools.get("https://github.com/wgois/OIS/archive/v{}.tar.gz".format(self.version))
 
