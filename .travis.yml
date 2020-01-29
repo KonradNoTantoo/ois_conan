@@ -8,6 +8,7 @@ env:
      - CONAN_CHANNEL: "testing"
      - CONAN_UPLOAD: "https://api.bintray.com/conan/konradnotantoo/utopia"
      - CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
+     - CONAN_BUILD_POLICY: "missing"
 
 linux: &linux
    os: linux
