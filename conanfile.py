@@ -31,6 +31,7 @@ conan_basic_setup()''')
 
     def _configure_cmake(self):
         cmake = CMake(self)
+        cmake.definitions["OIS_BUILD_DEMOS"] = "OFF"
         cmake.configure(source_folder=self.folder_name)
         return cmake
 
